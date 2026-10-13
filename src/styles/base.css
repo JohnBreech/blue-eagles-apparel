@@ -1,0 +1,182 @@
+/* Global foundations. Load tokens.css first.
+   Google Fonts provides Montserrat 500/600/700 and Questrial 400.
+   Arial remains available when the font service cannot load. */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Questrial&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  overflow-wrap: break-word;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-block: 0 var(--space-4);
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+}
+h1 { font-size: var(--font-size-h1); line-height: var(--line-height-h1); }
+h2 { font-size: var(--font-size-h2); line-height: var(--line-height-h2); }
+h3 { font-size: var(--font-size-h3); line-height: var(--line-height-h3); }
+h4 { font-size: var(--font-size-xl); }
+h5 { font-size: var(--font-size-lg); }
+h6 { font-size: var(--font-size-base); }
+
+p, ul, ol, dl, blockquote, figure {
+  margin-block: 0 var(--space-4);
+}
+figure, blockquote { margin-inline: 0; }
+ul, ol { padding-inline-start: var(--space-6); }
+/* Opt in on text lists; navigation and tags keep component-defined spacing. */
+.list-spaced > li + li { margin-block-start: var(--space-2); }
+small { font-size: var(--font-size-sm); }
+a {
+  color: var(--color-link);
+  text-underline-offset: 0.2em;
+}
+a:hover { color: var(--color-navy); text-decoration-thickness: 0.125em; }
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+img, video { height: auto; }
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+button, select,
+input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]) {
+  min-height: 2.75rem;
+}
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+textarea { resize: vertical; }
+fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+legend { padding: 0; }
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+::selection {
+  color: var(--color-navy);
+  background: var(--color-light-blue);
+}
+[hidden] { display: none !important; }
+
+/* Opt-in layout helpers; component styling belongs in separate files. */
+.container {
+  width: calc(100% - var(--page-gutter) - var(--page-gutter));
+  max-width: var(--container-width);
+  margin-inline: auto;
+
+}
+.section { padding-block: var(--section-spacing); }
+.flow > * + * { margin-block-start: var(--flow-space, var(--space-4)); }
+.text-muted { color: var(--color-text-muted); }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.display {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-display);
+  font-weight: var(--font-weight-heading);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--color-heading);
+}
+.price {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-price);
+  font-weight: var(--font-weight-price);
+  line-height: 1.238095;
+  font-variant-numeric: tabular-nums;
+}
+.label {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.333333;
+}
+.body-large { font-size: var(--font-size-lg); line-height: 1.555556; }
+small, .text-small { font-size: var(--font-size-sm); line-height: 1.428571; }
+
+/* The homepage “GRADUATING?” label, intended for a navy background. */
+.label-caps {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-heading);
+  line-height: 1.428571;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-light-blue);
+}
+
+/* Shared text roles: apply .card-title to listing titles.
+   These rules set typography only; layout stays with each component. */
+.card-title,
+label,
+.label,
+nav a,
+.nav-link {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Opt-in fields keep radio, checkbox, file and segmented controls untouched. */
+.form-control {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-input-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+}
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-placeholder);
+  opacity: 1;
+}
+.form-control:focus-visible { border-color: var(--color-focus); }
+.form-control[aria-invalid="true"] { border-color: var(--color-error); }
